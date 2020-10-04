@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${location.name}">Title</title>
+</head>
+<body>
+<section>
+    <h1 th:text="${location.name}"></h1>
+    <div>
+        <address>
+            <span th:text="${location.addressLine1}"/><br>
+            <span th:text="${location.city}"/> <span th:text="${location.state}"/>, <span th:text="${location.zip}"/><br>
+            <span th:text="${location.phoneNumber}"/><br>
+            <a th:href="${location.doordashURL}">delivery</a><br>
+            <a th:href="${location.pickupURL}">pickup</a><br>
+        </address>
+        <br>
+        <a th:href="@{/admin/locations/{name}/edit(name=${location.name})}">
+            <input type="submit" value="Edit Location Details"/>
+        </a>
+    </div>
+</section>
+<section>
+    <h1>Menu</h1>
+    <div th:each="menuCategory : ${location.menu}">
+        <h3 th:text="${menuCategory.name}"></h3>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+            <tr th:each="menuItem : ${menuCategory.menuItems}">
+                <td th:text="${menuItem.item.name}"></td>
+                <td th:text="${menuItem.item.description}"></td>
+                <td th:text="${menuItem.price}"></td>
+            </tr>
+        </table>
+    </div>
+</section>
+</body>
+</html>

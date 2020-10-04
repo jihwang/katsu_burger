@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Katsu Burger</title>
+</head>
+<body>
+<h1>Katsu Burger</h1>
+<div class="container">
+    <div class="locations">
+        <table>
+            <tr th:each="location : ${locations}">
+                <td><a th:href="@{/admin/locations/{id}(id=${location.getName()})}" th:text="${location.toString()}">location</a> </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

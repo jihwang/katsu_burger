@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${location.name}">Title</title>
+</head>
+<body>
+<section>
+    <h1 th:text="${location.name}"></h1>
+    <div>
+        <form th:action="@{/admin/locations/{name}/edit/submit/(name=${location.name})}" th:object="${location}" method="post">
+            <input type="text" id="addressLine1" name="addressLine1" th:value="*{addressLine1}" placeholder="Address Line 1"><br>
+            <input type="text" id="state" name="state" th:value="*{state}" placeholder="State"><br>
+            <input type="tel" id="phoneNumber" name="phoneNumber" th:value="*{phoneNumber}" placeholder="Phone Number"><br>
+            <input type="url" id="doordashURL" name="doordashURL" th:value="*{doordashURL}" placeholder="Doordash URL"><br>
+            <input type="url" id="pickupURL" name="pickupURL" th:value="*{pickupURL}" placeholder="Pickup URL"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</section>
+</body>
+</html>
